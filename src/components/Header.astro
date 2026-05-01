@@ -1,0 +1,54 @@
+---
+import { site } from '~/data/site';
+
+const navItems = [
+  { href: '/', label: 'หน้าแรก' },
+  { href: '/services', label: 'บริการ' },
+  { href: '/models', label: 'แบบบ้าน / ราคา' },
+  { href: '/portfolio', label: 'ผลงาน' },
+  { href: '/process', label: 'ขั้นตอน' },
+  { href: '/about', label: 'เกี่ยวกับเรา' },
+  { href: '/blog', label: 'บทความ' },
+  { href: '/contact', label: 'ติดต่อเรา' },
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a href="/" class="brand" aria-label={site.name}>
+      <img src="/logo-header.png" alt={site.name} width="180" height="48" />
+    </a>
+    <nav class="primary-nav" aria-label="หลัก">
+      <ul>
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href={`tel:${site.phonesE164[0]}`} class="btn btn-ghost">📞 {site.phones[0]}</a>
+      <a href="/contact" class="btn btn-primary">ขอใบเสนอราคา</a>
+    </div>
+    <button class="hamburger" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="มือถือ" hidden>
+    <ul>
+      {navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      <li><a href="/contact" class="btn btn-primary">ขอใบเสนอราคา</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.hamburger');
+  const nav = document.getElementById('mobile-nav');
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    if (nav) nav.hidden = expanded;
+  });
+</script>
