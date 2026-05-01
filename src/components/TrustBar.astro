@@ -1,3 +1,6 @@
+---
+import { site } from '~/data/site';
+---
 <div class="trust">
   <div class="container trust-grid">
     <div class="item">
@@ -10,7 +13,7 @@
       <div class="ico">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       </div>
-      <div><strong>ราคาคุ้มค่า</strong><span>เริ่มต้น 39,000 บาท</span></div>
+      <div><strong>ราคาคุ้มค่า</strong><span>เริ่มต้น ฿{site.startingPriceTHB.toLocaleString()} บาท</span></div>
     </div>
     <div class="item">
       <div class="ico">

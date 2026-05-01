@@ -1,4 +1,5 @@
 ---
+import { site } from '~/data/site';
 const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
 ---
 <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contact-form">
@@ -51,5 +52,5 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
     <textarea id="cf-msg" name="message" rows="4"></textarea>
   </div>
   <button type="submit" class="btn btn-primary btn-lg">ส่งข้อความ</button>
-  <p class="form-note">หรือโทรเลยที่ 097-259-2502 / แอดไลน์ @baannockdown</p>
+  <p class="form-note">หรือโทรเลยที่ {site.phones[0]} / แอดไลน์ {site.lineId}</p>
 </form>
