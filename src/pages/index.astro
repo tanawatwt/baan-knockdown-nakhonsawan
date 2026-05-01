@@ -1,0 +1,80 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Hero from '~/components/Hero.astro';
+import TrustBar from '~/components/TrustBar.astro';
+import WhyChooseUs from '~/components/WhyChooseUs.astro';
+import ServiceList from '~/components/ServiceList.astro';
+import ModelGrid from '~/components/ModelGrid.astro';
+import Process from '~/components/Process.astro';
+import PortfolioGrid from '~/components/PortfolioGrid.astro';
+import Promotion from '~/components/Promotion.astro';
+import FAQ from '~/components/FAQ.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { faqs } from '~/data/faq';
+
+const homeFaqs = faqs.slice(0, 3);
+---
+<BaseLayout
+  title="บ้านน็อคดาวน์ นครสวรรค์ รับสร้างครบวงจร เริ่ม 39,000 บาท"
+  description="บ้านน็อคดาวน์ นครสวรรค์ — รับออกแบบ ผลิต ติดตั้งบ้านน็อคดาวน์ครบวงจร โครงสร้างเหล็กกันสนิม สร้างเสร็จไว 15–45 วัน ราคาเริ่มต้น 39,000 บาท ให้บริการนครสวรรค์ กำแพงเพชร ชัยนาท พิษณุโลก อุทัยธานี"
+  canonicalPath="/"
+  pageId="home"
+>
+  <Hero />
+  <TrustBar />
+
+  <section>
+    <div class="container">
+      <div class="sec-head"><h2>ทำไมต้องเลือกเรา</h2></div>
+      <WhyChooseUs />
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sec-head"><h2>บริการของเรา</h2></div>
+      <ServiceList />
+      <div class="sec-cta"><a href="/services" class="btn btn-ghost">ดูบริการทั้งหมด →</a></div>
+    </div>
+  </section>
+
+  <section class="bg-tint">
+    <div class="container">
+      <div class="sec-head"><h2>แบบบ้านยอดนิยม</h2></div>
+      <ModelGrid />
+      <div class="sec-cta"><a href="/models" class="btn btn-ghost">ดูแบบบ้านและราคาทั้งหมด →</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sec-head"><h2>ขั้นตอนการทำงาน</h2></div>
+      <Process />
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sec-head"><h2>ผลงานของเรา</h2></div>
+      <PortfolioGrid limit={6} showFilters={false} />
+      <div class="sec-cta"><a href="/portfolio" class="btn btn-ghost">ดูผลงานทั้งหมด →</a></div>
+    </div>
+  </section>
+
+  <section class="bg-tint">
+    <div class="container">
+      <div class="sec-head"><h2>โปรโมชั่น</h2></div>
+      <Promotion />
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sec-head"><h2>คำถามที่พบบ่อย</h2></div>
+      <FAQ items={homeFaqs} />
+      <div class="sec-cta"><a href="/faq" class="btn btn-ghost">ดู FAQ ทั้งหมด →</a></div>
+    </div>
+  </section>
+
+  <FinalCTA />
+</BaseLayout>
