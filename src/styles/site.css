@@ -157,6 +157,12 @@ section.tinted{background:var(--tint-2)}
 .svc-d li svg{width:18px;height:18px;color:var(--green);flex-shrink:0;margin-top:3px}
 
 .models-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.model-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}
+.model-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.model-card>img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .4s}
+.model-card:hover>img{transform:scale(1.04)}
+.model-body{padding:18px}
 .model{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}
 .model:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .model-photo{aspect-ratio:4/3;position:relative;overflow:hidden}
@@ -192,6 +198,18 @@ section.tinted{background:var(--tint-2)}
 .gal .item.tall{grid-row:span 2}
 .gal .item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45),transparent 50%);pointer-events:none}
 .gal .item .cat{position:absolute;left:14px;top:14px;background:#fff;color:var(--green);font-size:12px;padding:5px 10px;border-radius:6px;font-weight:600}
+
+/* PortfolioGrid component classes */
+.portfolio-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filter-btn{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13.5px;font-family:inherit;cursor:pointer;transition:.15s;color:var(--ink-2)}
+.filter-btn[aria-selected="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.portfolio-item{margin:0;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;background:#f5f5f5}
+.portfolio-item>img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .4s}
+.portfolio-item:hover>img{transform:scale(1.05)}
+.portfolio-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);color:#fff}
+.portfolio-item figcaption strong{display:block;font-family:'Kanit';font-size:15px}
+.portfolio-item figcaption span{font-size:12.5px;color:#dfeede}
 
 /* Larger portfolio grid for portfolio page */
 .gal-full{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}

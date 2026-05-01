@@ -4,7 +4,7 @@ interface Props { model: HouseModel }
 const { model } = Astro.props;
 ---
 <article class="model-card">
-  <img src={model.images[0]} alt={`${model.title} บ้านน็อคดาวน์ นครสวรรค์`} loading="lazy" width="600" height="400" />
+  <img src={model.images[0]} alt={`${model.title} บ้านน็อคดาวน์ นครสวรรค์`} loading="lazy" width="600" height="450" />
   <div class="model-body">
     <h3>{model.title}</h3>
     <div class="model-meta">
