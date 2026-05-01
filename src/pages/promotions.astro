@@ -1,0 +1,29 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Promotion from '~/components/Promotion.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { site } from '~/data/site';
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'โปรโมชั่น', item: site.url + '/promotions' },
+  ],
+};
+---
+<BaseLayout
+  title="โปรโมชั่นบ้านน็อคดาวน์ นครสวรรค์ ฟรีออกแบบ + ประเมิน"
+  description="โปรโมชั่นบ้านน็อคดาวน์ ฟรีออกแบบเบื้องต้น ฟรีประเมินหน้างานในพื้นที่นครสวรรค์ ส่วนลดพิเศษสำหรับลูกค้าที่จองภายในเดือนนี้"
+  canonicalPath="/promotions"
+  jsonLd={breadcrumb}
+  pageId="promotions"
+>
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / โปรโมชั่น</nav>
+      <h1>โปรโมชั่นบ้านน็อคดาวน์</h1>
+    </div>
+  </section>
+  <section><div class="container"><Promotion /></div></section>
+  <FinalCTA />
+</BaseLayout>

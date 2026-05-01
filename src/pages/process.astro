@@ -1,0 +1,31 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Process from '~/components/Process.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { site } from '~/data/site';
+
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'ขั้นตอนการทำงาน', item: site.url + '/process' },
+  ],
+};
+---
+<BaseLayout
+  title="ขั้นตอนสร้างบ้านน็อคดาวน์ 6 ขั้น ครบวงจร"
+  description="6 ขั้นตอนสร้างบ้านน็อคดาวน์ ตั้งแต่ขอใบเสนอราคา ประเมินหน้างาน ผลิต ติดตั้ง จนส่งมอบงาน — บริการครบวงจรในนครสวรรค์"
+  canonicalPath="/process"
+  jsonLd={breadcrumb}
+  pageId="process"
+>
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / ขั้นตอนการทำงาน</nav>
+      <h1>ขั้นตอนสร้างบ้านน็อคดาวน์ ของเรา</h1>
+      <p>วางแผนชัดเจน ตั้งแต่เริ่มต้นจนส่งมอบงาน</p>
+    </div>
+  </section>
+  <section><div class="container"><Process /></div></section>
+  <FinalCTA />
+</BaseLayout>

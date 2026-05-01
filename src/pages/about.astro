@@ -1,0 +1,49 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { site } from '~/data/site';
+
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'เกี่ยวกับเรา', item: site.url + '/about' },
+  ],
+};
+---
+<BaseLayout
+  title="เรื่องบ้านบ้านน็อคดาวน์ นครสวรรค์ — เกี่ยวกับเรา"
+  description="เรื่องบ้านบ้านน็อคดาวน์ นครสวรรค์ ให้บริการรับสร้างบ้านน็อคดาวน์ครบวงจรตั้งแต่ปี 2566 เน้นคุณภาพ ความตรงต่อเวลา และให้คำปรึกษาลูกค้าทุกขั้นตอน"
+  canonicalPath="/about"
+  jsonLd={breadcrumb}
+  pageId="about"
+>
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / เกี่ยวกับเรา</nav>
+      <h1>เกี่ยวกับ {site.name}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <h2>เรื่องราวของเรา</h2>
+      <p>{site.name} ให้บริการรับสร้างบ้านน็อคดาวน์และบ้านสำเร็จรูปครบวงจร ตั้งแต่ปี 2566 โดยเน้นคุณภาพ ความตรงต่อเวลา และการให้คำแนะนำลูกค้าทุกขั้นตอนตั้งแต่เริ่มจนจบงาน</p>
+
+      <h2>คุณค่าของแบรนด์</h2>
+      <ul>
+        <li>คุ้มค่า</li><li>รวดเร็ว</li><li>ตรงต่อเวลา</li><li>ปรับแบบได้</li><li>ให้คำปรึกษาจริงใจ</li>
+      </ul>
+
+      <h2>วัสดุและโครงสร้าง</h2>
+      <ul>
+        <li><strong>โครงสร้าง:</strong> เหล็กกันสนิม</li>
+        <li><strong>ผนัง:</strong> PU / EPS</li>
+        <li><strong>หลังคา:</strong> เมทัลชีทพร้อมฉนวน</li>
+        <li><strong>พื้น:</strong> กระเบื้อง / SPC</li>
+        <li><strong>ประตูหน้าต่าง:</strong> อลูมิเนียมกระจก</li>
+        <li><strong>ระบบไฟฟ้า:</strong> พร้อมใช้งาน</li>
+      </ul>
+    </div>
+  </section>
+  <FinalCTA />
+</BaseLayout>

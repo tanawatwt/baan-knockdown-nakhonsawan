@@ -1,0 +1,29 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import FAQ from '~/components/FAQ.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { site } from '~/data/site';
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'คำถามที่พบบ่อย', item: site.url + '/faq' },
+  ],
+};
+---
+<BaseLayout
+  title="คำถามที่พบบ่อยเรื่องบ้านน็อคดาวน์ นครสวรรค์"
+  description="รวมคำถามที่พบบ่อยเรื่องบ้านน็อคดาวน์ ราคา ระยะเวลาก่อสร้าง วัสดุ พื้นที่ให้บริการ และการเตรียมพื้นที่"
+  canonicalPath="/faq"
+  jsonLd={breadcrumb}
+  pageId="faq"
+>
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / คำถามที่พบบ่อย</nav>
+      <h1>คำถามที่พบบ่อย</h1>
+    </div>
+  </section>
+  <section><div class="container"><FAQ /></div></section>
+  <FinalCTA />
+</BaseLayout>
