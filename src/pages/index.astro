@@ -12,7 +12,7 @@ import FAQ from '~/components/FAQ.astro';
 import FinalCTA from '~/components/FinalCTA.astro';
 import { faqs } from '~/data/faq';
 
-const homeFaqs = faqs.slice(0, 3);
+const homeFaqs = faqs.slice(0, 6);
 ---
 <BaseLayout
   title="บ้านน็อคดาวน์ นครสวรรค์ รับสร้างครบวงจร เริ่ม 39,000 บาท"
@@ -23,56 +23,145 @@ const homeFaqs = faqs.slice(0, 3);
   <Hero />
   <TrustBar />
 
-  <section>
+  <!-- Why Choose Us -->
+  <section data-screen-label="02 Why us">
     <div class="container">
-      <div class="sec-head"><h2>ทำไมต้องเลือกเรา</h2></div>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> ทำไมต้องเลือกเรา</span>
+          <h2 style="margin-top:14px">เหตุผลที่ลูกค้านครสวรรค์<br/>ไว้วางใจให้เราสร้างบ้านน็อคดาวน์</h2>
+        </div>
+        <p>เรารับงานครบวงจรตั้งแต่การออกแบบ ผลิตโครงสร้าง จนถึงการติดตั้งหน้างาน เน้นคุณภาพและตรงต่อเวลา</p>
+      </div>
       <WhyChooseUs />
     </div>
   </section>
 
-  <section>
+  <!-- Services -->
+  <section class="tinted" data-screen-label="03 Services">
     <div class="container">
-      <div class="sec-head"><h2>บริการของเรา</h2></div>
-      <ServiceList />
-      <div class="sec-cta"><a href="/services" class="btn btn-ghost">ดูบริการทั้งหมด →</a></div>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> บริการของเรา</span>
+          <h2 style="margin-top:14px">บริการบ้านน็อคดาวน์<br/>ครบทุกความต้องการ</h2>
+        </div>
+        <p>ตั้งแต่บ้านพักอาศัยขนาดเล็ก ไปจนถึงรีสอร์ท ร้านค้า และคาเฟ่</p>
+      </div>
+      <ServiceList limit={6} />
+      <div style="text-align:center;margin-top:36px">
+        <a href="/services" class="btn btn-light btn-lg">ดูบริการทั้งหมด</a>
+      </div>
     </div>
   </section>
 
-  <section class="bg-tint">
+  <!-- Models -->
+  <section data-screen-label="04 Models">
     <div class="container">
-      <div class="sec-head"><h2>แบบบ้านยอดนิยม</h2></div>
-      <ModelGrid />
-      <div class="sec-cta"><a href="/models" class="btn btn-ghost">ดูแบบบ้านและราคาทั้งหมด →</a></div>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> แบบบ้าน &amp; ราคา</span>
+          <h2 style="margin-top:14px">แบบบ้านน็อคดาวน์ยอดนิยม</h2>
+        </div>
+        <p>มีให้เลือกตั้งแต่บ้านขนาดเล็กสำหรับอยู่คนเดียว จนถึงบ้าน 2 ห้องนอนสำหรับครอบครัว</p>
+      </div>
+      <ModelGrid limit={4} />
+      <div style="text-align:center;margin-top:36px">
+        <a href="/models" class="btn btn-primary btn-lg">ดูแบบบ้านทั้งหมด</a>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="sec-head"><h2>ขั้นตอนการทำงาน</h2></div>
+  <!-- Process -->
+  <section class="tinted" data-screen-label="05 Process">
+    <div class="container process">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> ขั้นตอนการทำงาน</span>
+          <h2 style="margin-top:14px">วางแผนชัดเจน 6 ขั้นตอน</h2>
+        </div>
+      </div>
       <Process />
+      <div style="text-align:center;margin-top:36px">
+        <a href="/process" class="btn btn-light btn-lg">ดูขั้นตอนทั้งหมด</a>
+      </div>
     </div>
   </section>
 
+  <!-- Portfolio -->
+  <section data-screen-label="06 Portfolio">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> ผลงานของเรา</span>
+          <h2 style="margin-top:14px">ผลงานบ้านน็อคดาวน์<br/>นครสวรรค์ &amp; พื้นที่ใกล้เคียง</h2>
+        </div>
+        <p>รวมผลงานบ้านน็อคดาวน์ บ้านพักอาศัย รีสอร์ท และร้านค้าที่เราออกแบบและติดตั้งจริง</p>
+      </div>
+      <PortfolioGrid limit={5} showFilters={false} galLayout={true} />
+      <div style="text-align:center;margin-top:32px">
+        <a href="/portfolio" class="btn btn-light btn-lg">ดูผลงานทั้งหมด</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="tinted" data-screen-label="07 Areas">
+    <div class="container">
+      <div class="areas">
+        <div>
+          <span class="eyebrow" style="background:rgba(244,194,29,.18);color:#fff7d6"><span class="dot"></span> พื้นที่ให้บริการ</span>
+          <h2 style="margin-top:14px">บ้านน็อคดาวน์ใกล้คุณ<br/>ในนครสวรรค์ &amp; พื้นที่ใกล้เคียง</h2>
+          <p>เราเป็นทีมงานท้องถิ่น ตั้งฐานที่ ต.ยางตาล อ.โกรกพระ จ.นครสวรรค์ ครอบคลุม 5 จังหวัดภาคกลางตอนบน</p>
+          <div class="area-list">
+            <span class="main">📍 นครสวรรค์ (พื้นที่หลัก)</span>
+            <span>กำแพงเพชร</span>
+            <span>ชัยนาท</span>
+            <span>พิษณุโลก</span>
+            <span>อุทัยธานี</span>
+            <span>โกรกพระ</span>
+            <span>เก้าเลี้ยว</span>
+            <span>ตาคลี</span>
+            <span>ลาดยาว</span>
+          </div>
+          <a href="/contact" class="btn btn-yellow btn-lg">ตรวจสอบพื้นที่ของคุณ</a>
+        </div>
+        <div class="areas-visual">
+          <div class="pin">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <span class="label">นครสวรรค์ • โกรกพระ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promotions -->
   <section>
     <div class="container">
-      <div class="sec-head"><h2>ผลงานของเรา</h2></div>
-      <PortfolioGrid limit={6} showFilters={false} />
-      <div class="sec-cta"><a href="/portfolio" class="btn btn-ghost">ดูผลงานทั้งหมด →</a></div>
-    </div>
-  </section>
-
-  <section class="bg-tint">
-    <div class="container">
-      <div class="sec-head"><h2>โปรโมชั่น</h2></div>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> ข้อดีที่เลือกเรา</span>
+          <h2 style="margin-top:14px">สิ่งที่คุณได้รับจากเรา</h2>
+        </div>
+      </div>
       <Promotion />
     </div>
   </section>
 
-  <section>
+  <!-- FAQ -->
+  <section class="tinted">
     <div class="container">
-      <div class="sec-head"><h2>คำถามที่พบบ่อย</h2></div>
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> คำถามที่พบบ่อย</span>
+          <h2 style="margin-top:14px">ข้อสงสัยที่พบบ่อย</h2>
+        </div>
+        <a href="/faq" class="btn btn-ghost">ดู FAQ ทั้งหมด →</a>
+      </div>
       <FAQ items={homeFaqs} emitJsonLd={false} />
-      <div class="sec-cta"><a href="/faq" class="btn btn-ghost">ดู FAQ ทั้งหมด →</a></div>
     </div>
   </section>
 

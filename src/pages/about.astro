@@ -18,31 +18,77 @@ const breadcrumb = {
   jsonLd={breadcrumb}
   pageId="about"
 >
-  <section class="page-header">
+  <section class="page-head">
     <div class="container">
-      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / เกี่ยวกับเรา</nav>
+      <div class="crumbs"><a href="/">หน้าแรก</a><span>›</span>เกี่ยวกับเรา</div>
+      <span class="eyebrow"><span class="dot"></span> เกี่ยวกับเรา</span>
       <h1>เกี่ยวกับ {site.name}</h1>
+      <p class="lead">ทีมงานท้องถิ่น นครสวรรค์ บริการครบวงจรตั้งแต่ปี 2566</p>
     </div>
   </section>
   <section>
     <div class="container">
-      <h2>เรื่องราวของเรา</h2>
-      <p>{site.name} ให้บริการรับสร้างบ้านน็อคดาวน์และบ้านสำเร็จรูปครบวงจร ตั้งแต่ปี 2566 โดยเน้นคุณภาพ ความตรงต่อเวลา และการให้คำแนะนำลูกค้าทุกขั้นตอนตั้งแต่เริ่มจนจบงาน</p>
+      <div class="about-hero">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> เรื่องราวของเรา</span>
+          <h2 style="margin-top:14px">{site.name}</h2>
+          <p style="color:var(--muted);margin-top:12px">{site.name} ให้บริการรับสร้างบ้านน็อคดาวน์และบ้านสำเร็จรูปครบวงจร ตั้งแต่ปี 2566 โดยเน้นคุณภาพ ความตรงต่อเวลา และการให้คำแนะนำลูกค้าทุกขั้นตอนตั้งแต่เริ่มจนจบงาน</p>
+          <p style="color:var(--muted);margin-top:10px">ตั้งฐานที่ ต.ยางตาล อ.โกรกพระ จ.นครสวรรค์ พร้อมให้บริการนครสวรรค์ กำแพงเพชร ชัยนาท พิษณุโลก อุทัยธานี และพื้นที่ใกล้เคียง</p>
+        </div>
+        <img src="/photos/team-banner.jpg" alt="ทีมงานบ้านน็อคดาวน์ นครสวรรค์" loading="lazy" width="800" height="640" />
+      </div>
 
-      <h2>คุณค่าของแบรนด์</h2>
-      <ul>
-        <li>คุ้มค่า</li><li>รวดเร็ว</li><li>ตรงต่อเวลา</li><li>ปรับแบบได้</li><li>ให้คำปรึกษาจริงใจ</li>
-      </ul>
+      <div class="values" style="margin-top:48px">
+        <div class="value">
+          <div class="vico">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h4>คุ้มค่า</h4>
+        </div>
+        <div class="value">
+          <div class="vico">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>รวดเร็ว</h4>
+        </div>
+        <div class="value">
+          <div class="vico">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h4>ตรงต่อเวลา</h4>
+        </div>
+        <div class="value">
+          <div class="vico">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+          </div>
+          <h4>ปรับแบบได้</h4>
+        </div>
+        <div class="value">
+          <div class="vico">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>ให้คำปรึกษาจริงใจ</h4>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <h2>วัสดุและโครงสร้าง</h2>
-      <ul>
-        <li><strong>โครงสร้าง:</strong> เหล็กกันสนิม</li>
-        <li><strong>ผนัง:</strong> PU / EPS</li>
-        <li><strong>หลังคา:</strong> เมทัลชีทพร้อมฉนวน</li>
-        <li><strong>พื้น:</strong> กระเบื้อง / SPC</li>
-        <li><strong>ประตูหน้าต่าง:</strong> อลูมิเนียมกระจก</li>
-        <li><strong>ระบบไฟฟ้า:</strong> พร้อมใช้งาน</li>
-      </ul>
+  <section class="tinted">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> วัสดุและโครงสร้าง</span>
+          <h2 style="margin-top:14px">คุณภาพวัสดุที่ใช้</h2>
+        </div>
+      </div>
+      <div class="mat-grid">
+        <div class="mat"><div class="micon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div><div><h4>โครงสร้างเหล็กกันสนิม</h4><p>โครงเหล็กกล่องชุบกันสนิม แข็งแรง ทนทานระยะยาว</p></div></div>
+        <div class="mat"><div class="micon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><div><h4>ผนัง PU / EPS</h4><p>ฉนวนกันความร้อน ลดพลังงาน อยู่สบายตลอดปี</p></div></div>
+        <div class="mat"><div class="micon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div><h4>หลังคาเมทัลชีท</h4><p>เมทัลชีทพร้อมฉนวน กันน้ำ กันความร้อน</p></div></div>
+        <div class="mat"><div class="micon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><div><h4>พื้นกระเบื้อง / SPC</h4><p>พื้นสำเร็จรูปพร้อมใช้งาน เลือกได้ตามความต้องการ</p></div></div>
+        <div class="mat"><div class="micon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></div><div><h4>ประตู-หน้าต่างอลูมิเนียม</h4><p>อลูมิเนียมกระจก แข็งแรง ทนทาน ป้องกันความร้อน</p></div></div>
+        <div class="mat"><div class="micon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div><div><h4>ระบบไฟฟ้าพร้อมใช้</h4><p>ติดตั้งระบบไฟฟ้าครบ พร้อมใช้งานทันทีหลังส่งมอบ</p></div></div>
+      </div>
     </div>
   </section>
   <FinalCTA />

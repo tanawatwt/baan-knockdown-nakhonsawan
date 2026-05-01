@@ -28,49 +28,108 @@ const contactPoint = {
   jsonLd={[breadcrumb, contactPoint]}
   pageId="contact"
 >
-  <section class="page-header">
+  <section class="page-head">
     <div class="container">
-      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / ติดต่อเรา</nav>
-      <h1>ติดต่อเรา</h1>
-      <p>สนใจสร้างบ้านน็อคดาวน์ ติดต่อทีมงานเพื่อปรึกษาและขอใบเสนอราคา</p>
+      <div class="crumbs"><a href="/">หน้าแรก</a><span>›</span>ติดต่อ</div>
+      <span class="eyebrow"><span class="dot"></span> ติดต่อเรา</span>
+      <h1>ปรึกษาบ้านน็อคดาวน์ฟรี<br/>นครสวรรค์ &amp; พื้นที่ใกล้เคียง</h1>
+      <p class="lead">ส่งแบบ พื้นที่หน้างาน หรืองบประมาณให้ทีมงานประเมินราคาเบื้องต้นได้ฟรี ไม่มีค่าใช้จ่าย — ตอบกลับภายในวันทำการ</p>
     </div>
   </section>
 
   {sent && (
-    <section class="alert-success">
+    <section>
       <div class="container">
-        <p>✅ ขอบคุณค่ะ ทีมงานได้รับข้อความของคุณแล้ว จะติดต่อกลับโดยเร็วที่สุด</p>
+        <p style="background:var(--tint);color:var(--green);padding:16px 20px;border-radius:12px;font-weight:500">
+          ขอบคุณค่ะ ทีมงานได้รับข้อความของคุณแล้ว จะติดต่อกลับโดยเร็วที่สุด
+        </p>
       </div>
     </section>
   )}
 
   <section>
-    <div class="container contact-grid">
-      <div>
-        <h2>ส่งข้อความ</h2>
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <h2>ช่องทางติดต่อ</h2>
+          <p>เลือกช่องทางที่สะดวกที่สุดสำหรับคุณ ทีมงานพร้อมให้คำปรึกษาทุกวัน 08:00–17:00 น.</p>
+
+          <div class="ci-item">
+            <div class="ic">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>โทรเรา</strong>
+              {site.phones.map((p, i) => <a href={`tel:${site.phonesE164[i]}`}>{p}</a>)}
+            </div>
+          </div>
+
+          <div class="ci-item">
+            <div class="ic">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>LINE Official</strong>
+              <a href={site.lineUrl} target="_blank" rel="noopener">{site.lineId}</a>
+              <span style="display:block;color:#cfe9d9">ตอบไว ทุกวัน</span>
+            </div>
+          </div>
+
+          <div class="ci-item">
+            <div class="ic">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <strong>อีเมล</strong>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </div>
+          </div>
+
+          <div class="ci-item">
+            <div class="ic">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <strong>ที่อยู่</strong>
+              <span>{site.address.th}</span>
+            </div>
+          </div>
+
+          <div class="ci-item">
+            <div class="ic">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <strong>เวลาทำการ</strong>
+              <span>{site.hours}</span>
+            </div>
+          </div>
+        </div>
+
         <ContactForm />
       </div>
-      <aside>
-        <h2>ข้อมูลติดต่อ</h2>
-        <ul class="contact-info">
-          {site.phones.map((p, i) => <li>📞 <a href={`tel:${site.phonesE164[i]}`}>{p}</a></li>)}
-          <li>💬 LINE: <a href={site.lineUrl} rel="noopener" target="_blank">{site.lineId}</a></li>
-          <li>📘 Facebook: <a href={site.facebookUrl} rel="noopener" target="_blank">{site.name}</a></li>
-          <li>✉️ <a href={`mailto:${site.email}`}>{site.email}</a></li>
-          <li>📍 {site.address.th}</li>
-          <li>🕐 {site.hours}</li>
-        </ul>
-        <h3>พื้นที่ให้บริการ</h3>
-        <p>{site.serviceAreas.join(' • ')} และพื้นที่ใกล้เคียง</p>
-      </aside>
     </div>
   </section>
 
-  <section>
+  <section class="tinted">
     <div class="container">
-      <h2>แผนที่</h2>
       <MapEmbed />
-      <p><a href={site.gbpUrl} rel="noopener" target="_blank">🗺️ เปิดใน Google Maps</a></p>
+      <p style="margin-top:12px;font-size:14px">
+        <a href={site.gbpUrl} rel="noopener" target="_blank" style="color:var(--green);font-weight:500">เปิดใน Google Maps →</a>
+      </p>
     </div>
   </section>
 </BaseLayout>

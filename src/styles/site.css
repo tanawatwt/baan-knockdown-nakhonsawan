@@ -376,7 +376,8 @@ footer.site{background:#0a2415;color:#bfd2c5;padding:64px 0 24px;font-size:14px}
 @media (max-width:1100px){.blog-grid{grid-template-columns:repeat(2,1fr)}.blog-feature{grid-template-columns:1fr}.blog-feature .b-body{padding:0 28px 28px}}
 @media (max-width:820px){.blog-grid{grid-template-columns:1fr}.article h2{font-size:24px}.article h3{font-size:19px}.article{font-size:16px}}
 
-/* Last */
+/* Tablet/medium screens */
+@media (max-width:1100px){
   .why-grid{grid-template-columns:repeat(3,1fr)}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .models-grid{grid-template-columns:repeat(2,1fr)}

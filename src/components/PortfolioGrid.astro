@@ -1,8 +1,13 @@
 ---
 import { portfolio, type PortfolioCategory } from '~/data/portfolio';
 
-interface Props { limit?: number; showFilters?: boolean }
-const { limit, showFilters = true } = Astro.props;
+interface Props {
+  limit?: number;
+  showFilters?: boolean;
+  /** Use the Pinterest .gal layout (for home page previews) */
+  galLayout?: boolean;
+}
+const { limit, showFilters = true, galLayout = false } = Astro.props;
 const items = limit ? portfolio.slice(0, limit) : portfolio;
 
 const categories: { key: PortfolioCategory | 'all'; label: string }[] = [
@@ -13,60 +18,91 @@ const categories: { key: PortfolioCategory | 'all'; label: string }[] = [
   { key: 'commercial', label: 'ร้านค้า / รีสอร์ท' },
   { key: 'site', label: 'หน้างานติดตั้ง' },
 ];
+
+const catLabel: Record<string, string> = {
+  small: 'บ้านขนาดเล็ก',
+  '1br': 'บ้าน 1 ห้องนอน',
+  '2br': 'บ้าน 2 ห้องนอน',
+  commercial: 'ร้านค้า / รีสอร์ท',
+  site: 'หน้างานติดตั้ง',
+};
 ---
-{showFilters && (
-  <div class="portfolio-filters" role="tablist">
-    {categories.map((c) => (
-      <button class="filter-btn" data-cat={c.key} aria-selected={c.key === 'all'}>
-        {c.label}
-      </button>
+
+{galLayout ? (
+  <!-- Home-page Pinterest gallery layout: .gal -->
+  <div class="gal">
+    {items.slice(0, 5).map((p, i) => (
+      <div class={`item${i === 0 ? ' tall' : ''}`}>
+        <img src={p.images[0].src} alt={p.images[0].alt} loading="lazy" width="600" height={i === 0 ? '500' : '240'} />
+        <span class="cat">{catLabel[p.category] ?? p.category}</span>
+      </div>
     ))}
   </div>
-)}
-<div class="portfolio-grid">
-  {items.map((p) => (
-    <figure class="portfolio-item" data-cat={p.category}>
-      <img src={p.images[0].src} alt={p.images[0].alt} loading="lazy" width="600" height="450"
-           data-lightbox-src={p.images[0].src} data-lightbox-alt={p.images[0].alt} />
-      <figcaption>
-        <strong>{p.title}</strong>
-        <span>📍 {p.location}</span>
-      </figcaption>
-    </figure>
-  ))}
-</div>
+) : (
+  <!-- Full portfolio page layout -->
+  <>
+    {showFilters && (
+      <div class="portfolio-filters" role="tablist">
+        {categories.map((c) => (
+          <button class="filter-btn" data-cat={c.key} aria-selected={c.key === 'all' ? 'true' : 'false'}>
+            {c.label}
+          </button>
+        ))}
+      </div>
+    )}
+    <div class="portfolio-grid">
+      {items.map((p) => (
+        <figure class="portfolio-item" data-cat={p.category}>
+          <img
+            src={p.images[0].src}
+            alt={p.images[0].alt}
+            loading="lazy"
+            width="600"
+            height="450"
+            data-lightbox-src={p.images[0].src}
+            data-lightbox-alt={p.images[0].alt}
+          />
+          <figcaption>
+            <strong>{p.title}</strong>
+            <span>{p.location}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
 
-<dialog class="lightbox" aria-label="ดูภาพขยาย">
-  <button class="lightbox-close" aria-label="ปิด">×</button>
-  <img alt="" />
-</dialog>
+    <dialog class="lightbox" aria-label="ดูภาพขยาย">
+      <button class="lightbox-close" aria-label="ปิด">×</button>
+      <img alt="" />
+    </dialog>
 
-<script>
-  // Filter
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const items = document.querySelectorAll<HTMLElement>('.portfolio-item');
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const cat = btn.dataset.cat;
-      filterBtns.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
-      items.forEach((it) => {
-        it.style.display = (cat === 'all' || it.dataset.cat === cat) ? '' : 'none';
+    <script>
+      // Filter
+      const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+      const portfolioItems = document.querySelectorAll<HTMLElement>('.portfolio-item');
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const cat = btn.dataset.cat;
+          filterBtns.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+          portfolioItems.forEach((it) => {
+            it.style.display = (cat === 'all' || it.dataset.cat === cat) ? '' : 'none';
+          });
+        });
       });
-    });
-  });
 
-  // Lightbox
-  const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
-  const dialogImg = dialog?.querySelector<HTMLImageElement>('img');
-  const closeBtn = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
-  document.querySelectorAll<HTMLImageElement>('[data-lightbox-src]').forEach((img) => {
-    img.addEventListener('click', () => {
-      if (!dialog || !dialogImg) return;
-      dialogImg.src = img.dataset.lightboxSrc!;
-      dialogImg.alt = img.dataset.lightboxAlt!;
-      dialog.showModal();
-    });
-  });
-  closeBtn?.addEventListener('click', () => dialog?.close());
-  dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
-</script>
+      // Lightbox
+      const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+      const dialogImg = dialog?.querySelector<HTMLImageElement>('img');
+      const closeBtn = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
+      document.querySelectorAll<HTMLImageElement>('[data-lightbox-src]').forEach((img) => {
+        img.addEventListener('click', () => {
+          if (!dialog || !dialogImg) return;
+          dialogImg.src = img.dataset.lightboxSrc!;
+          dialogImg.alt = img.dataset.lightboxAlt!;
+          dialog.showModal();
+        });
+      });
+      closeBtn?.addEventListener('click', () => dialog?.close());
+      dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    </script>
+  </>
+)}

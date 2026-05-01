@@ -19,13 +19,14 @@ const breadcrumb = {
   jsonLd={breadcrumb}
   pageId="process"
 >
-  <section class="page-header">
+  <section class="page-head">
     <div class="container">
-      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / ขั้นตอนการทำงาน</nav>
+      <div class="crumbs"><a href="/">หน้าแรก</a><span>›</span>ขั้นตอนการทำงาน</div>
+      <span class="eyebrow"><span class="dot"></span> ขั้นตอนการทำงาน</span>
       <h1>ขั้นตอนสร้างบ้านน็อคดาวน์ ของเรา</h1>
-      <p>วางแผนชัดเจน ตั้งแต่เริ่มต้นจนส่งมอบงาน</p>
+      <p class="lead">วางแผนชัดเจน ตั้งแต่เริ่มต้นจนส่งมอบงาน</p>
     </div>
   </section>
-  <section><div class="container"><Process /></div></section>
+  <section class="tinted"><div class="container process"><Process /></div></section>
   <FinalCTA />
 </BaseLayout>

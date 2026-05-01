@@ -1,5 +1,6 @@
 ---
 import { faqs as allFaqs, type Faq } from '~/data/faq';
+
 interface Props { items?: Faq[]; limit?: number; emitJsonLd?: boolean }
 const { items, limit, emitJsonLd = true } = Astro.props;
 const list = (items ?? allFaqs).slice(0, limit ?? Infinity);
@@ -14,11 +15,11 @@ const jsonLd = emitJsonLd ? {
   })),
 } : null;
 ---
-<div class="faq-list">
+<div class="faq-grid">
   {list.map((f) => (
-    <details class="faq-item">
+    <details class="faq">
       <summary>{f.question}</summary>
-      <div class="faq-answer"><p>{f.answer}</p></div>
+      <p>{f.answer}</p>
     </details>
   ))}
 </div>

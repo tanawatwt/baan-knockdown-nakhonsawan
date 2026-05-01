@@ -22,6 +22,15 @@ const serviceSchemas = services.map((s) => ({
   provider: { '@id': `${site.url}/#business` },
   areaServed: site.serviceAreas,
 }));
+
+const photoMap: Record<string, string> = {
+  house: '/photos/blue-finished.jpg',
+  design: '/photos/grey-finished.jpg',
+  install: '/photos/install-frame.jpg',
+  extend: '/photos/painting.jpg',
+  rental: '/photos/blue-install.jpg',
+  shop: '/photos/green-house.jpg',
+};
 ---
 <BaseLayout
   title="บริการรับสร้างบ้านน็อคดาวน์ นครสวรรค์ ครบวงจร"
@@ -30,24 +39,37 @@ const serviceSchemas = services.map((s) => ({
   jsonLd={[breadcrumb, ...serviceSchemas]}
   pageId="services"
 >
-  <section class="page-header">
+  <section class="page-head">
     <div class="container">
-      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / บริการ</nav>
-      <h1>บริการรับสร้างบ้านน็อคดาวน์ นครสวรรค์</h1>
-      <p>ให้บริการออกแบบ ผลิต และติดตั้งบ้านน็อคดาวน์ครบวงจร</p>
+      <div class="crumbs"><a href="/">หน้าแรก</a><span>›</span>บริการ</div>
+      <span class="eyebrow"><span class="dot"></span> บริการของเรา</span>
+      <h1>บริการบ้านน็อคดาวน์<br/>ครบวงจรในนครสวรรค์</h1>
+      <p class="lead">ตั้งแต่ออกแบบแบบบ้าน ผลิตโครงสร้าง ติดตั้งหน้างาน ไปจนถึงการต่อเติมและงานเชิงพาณิชย์ ทีมท้องถิ่นนครสวรรค์ ดูแลทุกขั้นตอนด้วยทีมเดียว</p>
     </div>
   </section>
 
   <section>
     <div class="container">
-      {services.map((s) => (
-        <article class="service-detail" id={s.slug}>
-          <h2>{s.title}</h2>
-          <p>{s.longDescription}</p>
-          <ul class="benefits">
-            {s.benefits.map((b) => <li>✓ {b}</li>)}
-          </ul>
-        </article>
+      {services.map((s, i) => (
+        <div class={`svc-detail svc-d${i % 2 !== 0 ? ' alt' : ''}`} id={s.slug}>
+          <div class="svc-d-img">
+            <img src={s.image ?? photoMap[s.iconKey] ?? '/photos/blue-finished.jpg'} alt={s.title} loading="lazy" width="800" height="600" />
+          </div>
+          <div>
+            <span class="num">SERVICE {String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p>{s.longDescription}</p>
+            <ul>
+              {s.benefits.map((b) => (
+                <li>
+                  <svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class="btn btn-primary">ขอใบเสนอราคา →</a>
+          </div>
+        </div>
       ))}
     </div>
   </section>

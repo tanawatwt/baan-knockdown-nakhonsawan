@@ -1,13 +1,32 @@
 ---
 import type { Service } from '~/data/services';
-interface Props { service: Service }
-const { service } = Astro.props;
+
+interface Props {
+  service: Service;
+  index?: number;
+}
+const { service, index = 0 } = Astro.props;
+
+// Map service iconKey to a photo
+const photoMap: Record<string, string> = {
+  house: '/photos/blue-finished.jpg',
+  design: '/photos/grey-finished.jpg',
+  install: '/photos/install-frame.jpg',
+  extend: '/photos/painting.jpg',
+  rental: '/photos/blue-install.jpg',
+  shop: '/photos/green-house.jpg',
+};
+const photo = service.image ?? photoMap[service.iconKey] ?? '/photos/blue-finished.jpg';
+const num = String(index + 1).padStart(2, '0');
 ---
-<article class="service-card">
-  <h3>{service.title}</h3>
-  <p>{service.shortDescription}</p>
-  <ul>
-    {service.benefits.map((b) => <li>✓ {b}</li>)}
-  </ul>
-  <a href={`/services#${service.slug}`} class="link-arrow">ดูเพิ่มเติม →</a>
+<article class="svc-card">
+  <div class="svc-photo">
+    <img src={photo} alt={service.title} loading="lazy" width="600" height="375" />
+    <div class="svc-num">{num}</div>
+  </div>
+  <div class="svc-body">
+    <h3>{service.title}</h3>
+    <p>{service.shortDescription}</p>
+    <a href={`/services#${service.slug}`} class="more">ดูรายละเอียด →</a>
+  </div>
 </article>

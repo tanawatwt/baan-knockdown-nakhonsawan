@@ -1,16 +1,38 @@
 ---
 const promos = [
-  { icon: '🎁', title: 'ฟรีออกแบบเบื้องต้น', desc: 'ปรึกษาทีมออกแบบฟรี ไม่มีค่าใช้จ่าย' },
-  { icon: '📍', title: 'ฟรีประเมินหน้างาน', desc: 'พื้นที่นครสวรรค์และจังหวัดใกล้เคียง' },
-  { icon: '💰', title: 'ส่วนลดพิเศษ', desc: 'สำหรับลูกค้าที่จองภายในเดือนนี้' },
+  {
+    title: 'ฟรีออกแบบเบื้องต้น',
+    desc: 'ปรึกษาทีมออกแบบฟรี ไม่มีค่าใช้จ่าย ได้แบบก่อนตัดสินใจ',
+    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>`,
+  },
+  {
+    title: 'ฟรีประเมินหน้างาน',
+    desc: 'พื้นที่นครสวรรค์และจังหวัดใกล้เคียง ไม่มีค่าเดินทาง',
+    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  },
+  {
+    title: 'ส่วนลดพิเศษ',
+    desc: 'สำหรับลูกค้าที่จองภายในเดือนนี้ ติดต่อสอบถามได้เลย',
+    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>`,
+  },
+  {
+    title: 'รับประกันโครงสร้าง',
+    desc: 'รับประกันโครงสร้างเหล็กกันสนิม มั่นใจทุกหลัง',
+    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  },
+  {
+    title: 'สร้างเสร็จไว',
+    desc: 'ส่งมอบงานตามกำหนด ไม่ยืดเยื้อ',
+    icon: `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  },
 ];
 ---
-<div class="promo-grid">
+<div class="values">
   {promos.map((p) => (
-    <article class="promo-card">
-      <div class="promo-icon">{p.icon}</div>
-      <h3>{p.title}</h3>
-      <p>{p.desc}</p>
-    </article>
+    <div class="value">
+      <div class="vico" set:html={p.icon}></div>
+      <h4>{p.title}</h4>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">{p.desc}</p>
+    </div>
   ))}
 </div>

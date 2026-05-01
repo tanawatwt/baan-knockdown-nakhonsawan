@@ -2,44 +2,49 @@
 import { site } from '~/data/site';
 const year = new Date().getFullYear();
 ---
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <img src="/logo-header.png" alt={site.name} width="113" height="48" />
-      <p>{site.description}</p>
-    </div>
-    <div>
-      <h3>เมนู</h3>
-      <ul class="footer-links">
-        <li><a href="/services">บริการ</a></li>
-        <li><a href="/models">แบบบ้าน / ราคา</a></li>
-        <li><a href="/portfolio">ผลงาน</a></li>
-        <li><a href="/process">ขั้นตอน</a></li>
-        <li><a href="/about">เกี่ยวกับเรา</a></li>
-        <li><a href="/blog">บทความ</a></li>
-        <li><a href="/faq">คำถามที่พบบ่อย</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>ติดต่อ</h3>
-      <ul class="footer-contact">
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="/logo-header.png" alt={site.name} />
+          <div>
+            <strong>{site.name}</strong>
+            <span>รับสร้างบ้านน็อคดาวน์ครบวงจร</span>
+          </div>
+        </div>
+        <p style="font-size:14px;color:#8ca695;max-width:260px">{site.description}</p>
+      </div>
+      <div>
+        <h5>เมนู</h5>
+        <a href="/services">บริการ</a>
+        <a href="/models">แบบบ้าน / ราคา</a>
+        <a href="/portfolio">ผลงาน</a>
+        <a href="/process">ขั้นตอน</a>
+        <a href="/about">เกี่ยวกับเรา</a>
+        <a href="/blog">บทความ</a>
+        <a href="/faq">คำถามที่พบบ่อย</a>
+      </div>
+      <div>
+        <h5>ติดต่อเรา</h5>
         {site.phones.map((p, i) => (
-          <li><a href={`tel:${site.phonesE164[i]}`}>📞 {p}</a></li>
+          <a href={`tel:${site.phonesE164[i]}`}>{p}</a>
         ))}
-        <li><a href={site.lineUrl}>LINE: {site.lineId}</a></li>
-        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-        <li>{site.address.th}</li>
-        <li>{site.hours}</li>
-      </ul>
+        <a href={site.lineUrl} rel="noopener" target="_blank">LINE: {site.lineId}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a href={site.facebookUrl} rel="noopener" target="_blank">Facebook</a>
+      </div>
+      <div>
+        <h5>พื้นที่ให้บริการ</h5>
+        {site.serviceAreas.map((area) => (
+          <a href="/contact">{area}</a>
+        ))}
+        <a href="/contact">โกรกพระ • เก้าเลี้ยว • ตาคลี</a>
+      </div>
     </div>
-    <div>
-      <h3>พื้นที่ให้บริการ</h3>
-      <ul class="service-areas">
-        {site.serviceAreas.map((area) => <li>{area}</li>)}
-      </ul>
+    <div class="foot-bottom">
+      <span>© {year} {site.name}. สงวนลิขสิทธิ์.</span>
+      <span>{site.address.th}</span>
     </div>
-  </div>
-  <div class="container footer-bottom">
-    <small>© {year} {site.name}. สงวนลิขสิทธิ์.</small>
   </div>
 </footer>

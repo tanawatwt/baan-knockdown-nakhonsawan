@@ -38,19 +38,20 @@ const productSchemas = models.map((m) => ({
   jsonLd={[breadcrumb, ...productSchemas]}
   pageId="models"
 >
-  <section class="page-header">
+  <section class="page-head">
     <div class="container">
-      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / แบบบ้าน / ราคา</nav>
+      <div class="crumbs"><a href="/">หน้าแรก</a><span>›</span>แบบบ้าน / ราคา</div>
+      <span class="eyebrow"><span class="dot"></span> แบบบ้าน &amp; ราคา</span>
       <h1>แบบบ้านน็อคดาวน์ และราคา นครสวรรค์</h1>
-      <p>เลือกแบบบ้านให้เหมาะกับงบประมาณและพื้นที่ของคุณ</p>
+      <p class="lead">เลือกแบบบ้านให้เหมาะกับงบประมาณและพื้นที่ของคุณ</p>
     </div>
   </section>
   <section>
     <div class="container"><ModelGrid /></div>
   </section>
-  <section class="bg-tint">
+  <section class="tinted">
     <div class="container">
-      <p class="note">หมายเหตุ: ราคาขึ้นอยู่กับขนาด วัสดุ แบบบ้าน และพื้นที่ติดตั้ง สามารถขอใบเสนอราคาฟรีได้ตลอด</p>
+      <p style="color:var(--muted);font-size:14px">หมายเหตุ: ราคาขึ้นอยู่กับขนาด วัสดุ แบบบ้าน และพื้นที่ติดตั้ง สามารถขอใบเสนอราคาฟรีได้ตลอด</p>
     </div>
   </section>
   <FinalCTA />

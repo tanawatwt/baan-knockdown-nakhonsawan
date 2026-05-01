@@ -1,20 +1,22 @@
 ---
 import type { HouseModel } from '~/data/models';
+
 interface Props { model: HouseModel }
 const { model } = Astro.props;
+
+const priceDisplay = model.startingPriceTHB > 0
+  ? `฿${model.startingPriceTHB.toLocaleString()}`
+  : 'ตามแบบ';
+const pricePrefix = model.startingPriceTHB > 0 ? 'เริ่มต้น' : 'ประเมิน';
 ---
-<article class="model-card">
-  <img src={model.images[0]} alt={`${model.title} บ้านน็อคดาวน์ นครสวรรค์`} loading="lazy" width="600" height="450" />
+<article class="model">
+  <div class="model-photo">
+    <img src={model.images[0]} alt={`${model.title} บ้านน็อคดาวน์ นครสวรรค์`} loading="lazy" width="600" height="450" />
+  </div>
   <div class="model-body">
+    <div class="size">{model.sizeRange}</div>
     <h3>{model.title}</h3>
-    <div class="model-meta">
-      <span>📐 {model.sizeRange}</span>
-      <span class="price">฿{model.startingPriceTHB.toLocaleString()}+</span>
-    </div>
-    <p>{model.suitableFor}</p>
-    <ul>
-      {model.features.map((f) => <li>✓ {f}</li>)}
-    </ul>
-    <a href="/contact" class="btn btn-primary">ขอใบเสนอราคา</a>
+    <p class="desc">{model.suitableFor}</p>
+    <div class="price"><small>{pricePrefix}</small>{priceDisplay}</div>
   </div>
 </article>

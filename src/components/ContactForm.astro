@@ -9,48 +9,73 @@ const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
   <input type="hidden" name="redirect" value="/contact?sent=1" />
   <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
-  <div class="field">
-    <label for="cf-name">ชื่อ <span aria-hidden="true">*</span></label>
-    <input id="cf-name" name="name" type="text" required autocomplete="name" />
+  <h3>ขอใบเสนอราคา / ปรึกษาฟรี</h3>
+  <p>กรอกแบบฟอร์มด้านล่าง ทีมงานจะติดต่อกลับภายในวันทำการ</p>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="cf-name">ชื่อ-นามสกุล *</label>
+      <input id="cf-name" name="name" type="text" required placeholder="ชื่อ นามสกุล" autocomplete="name" />
+    </div>
+    <div class="field">
+      <label for="cf-phone">เบอร์โทร *</label>
+      <input id="cf-phone" name="phone" type="tel" required placeholder="08x-xxx-xxxx" autocomplete="tel" pattern="[0-9 \-]+" />
+    </div>
   </div>
-  <div class="field">
-    <label for="cf-phone">เบอร์โทร <span aria-hidden="true">*</span></label>
-    <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" pattern="[0-9 \-]+" />
+
+  <div class="field-row">
+    <div class="field">
+      <label for="cf-line">LINE ID</label>
+      <input id="cf-line" name="line_id" type="text" placeholder="@yourlineid" />
+    </div>
+    <div class="field">
+      <label for="cf-province">จังหวัด *</label>
+      <select id="cf-province" name="province" required>
+        <option value="">เลือกจังหวัด</option>
+        <option>นครสวรรค์</option>
+        <option>กำแพงเพชร</option>
+        <option>ชัยนาท</option>
+        <option>พิษณุโลก</option>
+        <option>อุทัยธานี</option>
+        <option>อื่นๆ</option>
+      </select>
+    </div>
   </div>
-  <div class="field">
-    <label for="cf-line">LINE ID</label>
-    <input id="cf-line" name="line_id" type="text" />
+
+  <div class="field-row">
+    <div class="field">
+      <label for="cf-type">แบบบ้านที่สนใจ</label>
+      <select id="cf-type" name="house_type">
+        <option value="">เลือกแบบ</option>
+        <option>บ้านขนาดเล็ก (8–10 ตร.ม.)</option>
+        <option>บ้าน 1 ห้องนอน (24–36 ตร.ม.)</option>
+        <option>บ้าน 2 ห้องนอน (36–60 ตร.ม.)</option>
+        <option>รีสอร์ท / ปล่อยเช่า</option>
+        <option>ร้านค้า / คาเฟ่</option>
+        <option>ต่อเติมบ้าน</option>
+        <option>ออกแบบเฉพาะ</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="cf-budget">งบประมาณ</label>
+      <select id="cf-budget" name="budget">
+        <option value="">เลือกช่วงงบ</option>
+        <option>ต่ำกว่า 50,000</option>
+        <option>50,000 – 150,000</option>
+        <option>150,000 – 300,000</option>
+        <option>300,000 – 500,000</option>
+        <option>มากกว่า 500,000</option>
+      </select>
+    </div>
   </div>
+
   <div class="field">
-    <label for="cf-type">ประเภทบ้านที่สนใจ</label>
-    <select id="cf-type" name="house_type">
-      <option value="">เลือก...</option>
-      <option>บ้านขนาดเล็ก 8–10 ตร.ม.</option>
-      <option>บ้าน 1 ห้องนอน</option>
-      <option>บ้าน 2 ห้องนอน</option>
-      <option>บ้านรีสอร์ท / ร้านค้า / คาเฟ่</option>
-      <option>ต่อเติมบ้าน</option>
-      <option>ยังไม่แน่ใจ</option>
-    </select>
+    <label for="cf-msg">รายละเอียดเพิ่มเติม</label>
+    <textarea id="cf-msg" name="message" placeholder="พื้นที่หน้างาน, ความต้องการพิเศษ, ระยะเวลาที่ต้องการ"></textarea>
   </div>
-  <div class="field">
-    <label for="cf-budget">งบประมาณโดยประมาณ</label>
-    <select id="cf-budget" name="budget">
-      <option value="">เลือก...</option>
-      <option>ต่ำกว่า 100,000 บาท</option>
-      <option>100,000 – 300,000 บาท</option>
-      <option>300,000 – 600,000 บาท</option>
-      <option>มากกว่า 600,000 บาท</option>
-    </select>
-  </div>
-  <div class="field">
-    <label for="cf-area">พื้นที่ติดตั้ง / จังหวัด</label>
-    <input id="cf-area" name="install_area" type="text" placeholder="เช่น อ.โกรกพระ จ.นครสวรรค์" />
-  </div>
-  <div class="field">
-    <label for="cf-msg">ข้อความเพิ่มเติม</label>
-    <textarea id="cf-msg" name="message" rows="4"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary btn-lg">ส่งข้อความ</button>
-  <p class="form-note">หรือโทรเลยที่ {site.phones[0]} / แอดไลน์ {site.lineId}</p>
+
+  <button type="submit" class="btn btn-primary btn-lg" style="width:100%">ส่งคำขอใบเสนอราคา →</button>
+  <p style="font-size:13.5px;color:var(--muted);margin-top:10px;text-align:center">
+    หรือโทรเลยที่ {site.phones[0]} / แอดไลน์ {site.lineId}
+  </p>
 </form>

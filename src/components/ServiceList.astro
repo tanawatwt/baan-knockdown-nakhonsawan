@@ -1,10 +1,11 @@
 ---
 import { services } from '~/data/services';
 import ServiceCard from './ServiceCard.astro';
+
 interface Props { limit?: number }
 const { limit } = Astro.props;
 const items = limit ? services.slice(0, limit) : services;
 ---
-<div class="service-grid">
-  {items.map((s) => <ServiceCard service={s} />)}
+<div class="svc-grid">
+  {items.map((s, i) => <ServiceCard service={s} index={i} />)}
 </div>
