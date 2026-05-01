@@ -1,0 +1,45 @@
+---
+import { site } from '~/data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/logo-header.png" alt={site.name} width="180" height="48" />
+      <p>{site.description}</p>
+    </div>
+    <div>
+      <h4>เมนู</h4>
+      <ul class="footer-links">
+        <li><a href="/services">บริการ</a></li>
+        <li><a href="/models">แบบบ้าน / ราคา</a></li>
+        <li><a href="/portfolio">ผลงาน</a></li>
+        <li><a href="/process">ขั้นตอน</a></li>
+        <li><a href="/about">เกี่ยวกับเรา</a></li>
+        <li><a href="/blog">บทความ</a></li>
+        <li><a href="/faq">คำถามที่พบบ่อย</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>ติดต่อ</h4>
+      <ul class="footer-contact">
+        {site.phones.map((p, i) => (
+          <li><a href={`tel:${site.phonesE164[i]}`}>📞 {p}</a></li>
+        ))}
+        <li><a href={site.lineUrl}>LINE: {site.lineId}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li>{site.address.th}</li>
+        <li>{site.hours}</li>
+      </ul>
+    </div>
+    <div>
+      <h4>พื้นที่ให้บริการ</h4>
+      <ul class="service-areas">
+        {site.serviceAreas.map((area) => <li>{area}</li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <small>© {year} {site.name}. สงวนลิขสิทธิ์.</small>
+  </div>
+</footer>
