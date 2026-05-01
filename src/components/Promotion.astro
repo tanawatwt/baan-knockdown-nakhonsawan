@@ -1,0 +1,16 @@
+---
+const promos = [
+  { icon: '🎁', title: 'ฟรีออกแบบเบื้องต้น', desc: 'ปรึกษาทีมออกแบบฟรี ไม่มีค่าใช้จ่าย' },
+  { icon: '📍', title: 'ฟรีประเมินหน้างาน', desc: 'พื้นที่นครสวรรค์และจังหวัดใกล้เคียง' },
+  { icon: '💰', title: 'ส่วนลดพิเศษ', desc: 'สำหรับลูกค้าที่จองภายในเดือนนี้' },
+];
+---
+<div class="promo-grid">
+  {promos.map((p) => (
+    <article class="promo-card">
+      <div class="promo-icon">{p.icon}</div>
+      <h3>{p.title}</h3>
+      <p>{p.desc}</p>
+    </article>
+  ))}
+</div>

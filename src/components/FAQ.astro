@@ -1,0 +1,25 @@
+---
+import { faqs as allFaqs, type Faq } from '~/data/faq';
+interface Props { items?: Faq[]; limit?: number; emitJsonLd?: boolean }
+const { items, limit, emitJsonLd = true } = Astro.props;
+const list = (items ?? allFaqs).slice(0, limit ?? Infinity);
+
+const jsonLd = emitJsonLd ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: list.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+} : null;
+---
+<div class="faq-list">
+  {list.map((f) => (
+    <details class="faq-item">
+      <summary>{f.question}</summary>
+      <div class="faq-answer"><p>{f.answer}</p></div>
+    </details>
+  ))}
+</div>
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

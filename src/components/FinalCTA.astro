@@ -1,0 +1,17 @@
+---
+import { site } from '~/data/site';
+interface Props { headline?: string; sub?: string }
+const { headline = 'สนใจสร้างบ้านน็อคดาวน์ ปรึกษาฟรีวันนี้',
+        sub = 'ส่งแบบหรือพื้นที่หน้างานมาให้ทีมงานประเมินราคาเบื้องต้นได้เลย' } = Astro.props;
+---
+<section class="final-cta">
+  <div class="container final-cta-inner">
+    <h2>{headline}</h2>
+    <p>{sub}</p>
+    <div class="final-cta-buttons">
+      <a href={`tel:${site.phonesE164[0]}`} class="btn btn-primary btn-lg">📞 โทรเลย {site.phones[0]}</a>
+      <a href={site.lineUrl} class="btn btn-line btn-lg" rel="noopener" target="_blank">แอด LINE {site.lineId}</a>
+      <a href={site.messengerUrl} class="btn btn-fb btn-lg" rel="noopener" target="_blank">ทัก Facebook</a>
+    </div>
+  </div>
+</section>
