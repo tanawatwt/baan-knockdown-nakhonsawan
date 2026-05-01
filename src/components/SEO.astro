@@ -11,7 +11,7 @@ interface Props {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, image = '/og-default.jpg', canonicalPath, ogType = 'website', noindex = false, jsonLd } = Astro.props;
+const { title, description, image = '/og-default.png', canonicalPath, ogType = 'website', noindex = false, jsonLd } = Astro.props;
 const canonical = new URL(canonicalPath, site.url).toString();
 const ogImage = new URL(image, site.url).toString();
 const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
