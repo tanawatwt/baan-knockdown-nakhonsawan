@@ -1,0 +1,72 @@
+---
+import { portfolio, type PortfolioCategory } from '~/data/portfolio';
+
+interface Props { limit?: number; showFilters?: boolean }
+const { limit, showFilters = true } = Astro.props;
+const items = limit ? portfolio.slice(0, limit) : portfolio;
+
+const categories: { key: PortfolioCategory | 'all'; label: string }[] = [
+  { key: 'all', label: 'ทั้งหมด' },
+  { key: 'small', label: 'บ้านขนาดเล็ก' },
+  { key: '1br', label: 'บ้าน 1 ห้องนอน' },
+  { key: '2br', label: 'บ้าน 2 ห้องนอน' },
+  { key: 'commercial', label: 'ร้านค้า / รีสอร์ท' },
+  { key: 'site', label: 'หน้างานติดตั้ง' },
+];
+---
+{showFilters && (
+  <div class="portfolio-filters" role="tablist">
+    {categories.map((c) => (
+      <button class="filter-btn" data-cat={c.key} aria-selected={c.key === 'all'}>
+        {c.label}
+      </button>
+    ))}
+  </div>
+)}
+<div class="portfolio-grid">
+  {items.map((p) => (
+    <figure class="portfolio-item" data-cat={p.category}>
+      <img src={p.images[0].src} alt={p.images[0].alt} loading="lazy" width="600" height="450"
+           data-lightbox-src={p.images[0].src} data-lightbox-alt={p.images[0].alt} />
+      <figcaption>
+        <strong>{p.title}</strong>
+        <span>📍 {p.location}</span>
+      </figcaption>
+    </figure>
+  ))}
+</div>
+
+<dialog class="lightbox" aria-label="ดูภาพขยาย">
+  <button class="lightbox-close" aria-label="ปิด">×</button>
+  <img alt="" />
+</dialog>
+
+<script>
+  // Filter
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.portfolio-item');
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat;
+      filterBtns.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+      items.forEach((it) => {
+        it.style.display = (cat === 'all' || it.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  // Lightbox
+  const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+  const dialogImg = dialog?.querySelector<HTMLImageElement>('img');
+  const closeBtn = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
+  document.querySelectorAll<HTMLImageElement>('[data-lightbox-src]').forEach((img) => {
+    img.addEventListener('click', () => {
+      if (!dialog || !dialogImg) return;
+      dialogImg.src = img.dataset.lightboxSrc!;
+      dialogImg.alt = img.dataset.lightboxAlt!;
+      dialog.showModal();
+    });
+  });
+  closeBtn?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+</script>
