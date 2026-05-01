@@ -1,18 +1,23 @@
 ---
 import { site } from '~/data/site';
 
-const navItems = [
-  { href: '/', label: 'หน้าแรก' },
+const primaryNav = [
   { href: '/services', label: 'บริการ' },
   { href: '/models', label: 'แบบบ้าน / ราคา' },
   { href: '/portfolio', label: 'ผลงาน' },
-  { href: '/process', label: 'ขั้นตอน' },
-  { href: '/about', label: 'เกี่ยวกับเรา' },
   { href: '/blog', label: 'บทความ' },
-  { href: '/contact', label: 'ติดต่อเรา' },
 ];
+
+const moreNav = [
+  { href: '/process', label: 'ขั้นตอนการทำงาน' },
+  { href: '/about', label: 'เกี่ยวกับเรา' },
+  { href: '/faq', label: 'คำถามที่พบบ่อย' },
+  { href: '/promotions', label: 'โปรโมชั่น' },
+];
+
 const rawPath = Astro.url.pathname;
 const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
+const isMoreActive = moreNav.some((i) => i.href === currentPath);
 ---
 
 <div class="top-bar">
@@ -34,16 +39,33 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   <div class="container">
     <div class="nav">
       <a href="/" class="brand" aria-label={site.name}>
-        <img src="/logo-header.png" alt={site.name} width="113" height="48" />
+        <img src="/logo-header.png" alt={site.name} width="160" height="68" />
+        <div class="brand-text">
+          <strong>เรื่องบ้านบ้านน็อคดาวน์</strong>
+          <span>นครสวรรค์ • รับสร้างบ้านน็อคดาวน์ครบวงจร</span>
+        </div>
       </a>
       <nav class="nav-links" id="nav-links" aria-label="หลัก">
-        {navItems.map((item) => (
+        <a href="/" class={currentPath === '/' ? 'active' : undefined} aria-current={currentPath === '/' ? 'page' : undefined}>หน้าแรก</a>
+        {primaryNav.map((item) => (
           <a
             href={item.href}
             class={currentPath === item.href ? 'active' : undefined}
             aria-current={currentPath === item.href ? 'page' : undefined}
           >{item.label}</a>
         ))}
+        <details class={`nav-more${isMoreActive ? ' active' : ''}`}>
+          <summary>เพิ่มเติม</summary>
+          <div class="nav-more-menu">
+            {moreNav.map((item) => (
+              <a
+                href={item.href}
+                class={currentPath === item.href ? 'active' : undefined}
+                aria-current={currentPath === item.href ? 'page' : undefined}
+              >{item.label}</a>
+            ))}
+          </div>
+        </details>
       </nav>
       <div class="nav-cta">
         <a href={`tel:${site.phonesE164[0]}`} class="btn btn-ghost">โทรเลย</a>
@@ -63,5 +85,12 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
     nav?.classList.toggle('open', !expanded);
+  });
+
+  // Close the "เพิ่มเติม" dropdown when clicking outside (desktop only)
+  document.addEventListener('click', (e) => {
+    const more = document.querySelector<HTMLDetailsElement>('.nav-more');
+    if (!more) return;
+    if (!more.contains(e.target as Node)) more.open = false;
   });
 </script>
