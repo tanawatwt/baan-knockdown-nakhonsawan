@@ -1,0 +1,55 @@
+---
+const WEB3FORMS_KEY = import.meta.env.WEB3FORMS_KEY;
+---
+<form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contact-form">
+  <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+  <input type="hidden" name="subject" value="ติดต่อจากเว็บไซต์ — บ้านน็อคดาวน์ นครสวรรค์" />
+  <input type="hidden" name="from_name" value="Banban Knockdown Website" />
+  <input type="hidden" name="redirect" value="/contact?sent=1" />
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+  <div class="field">
+    <label for="cf-name">ชื่อ <span aria-hidden="true">*</span></label>
+    <input id="cf-name" name="name" type="text" required autocomplete="name" />
+  </div>
+  <div class="field">
+    <label for="cf-phone">เบอร์โทร <span aria-hidden="true">*</span></label>
+    <input id="cf-phone" name="phone" type="tel" required autocomplete="tel" pattern="[0-9 \-]+" />
+  </div>
+  <div class="field">
+    <label for="cf-line">LINE ID</label>
+    <input id="cf-line" name="line_id" type="text" />
+  </div>
+  <div class="field">
+    <label for="cf-type">ประเภทบ้านที่สนใจ</label>
+    <select id="cf-type" name="house_type">
+      <option value="">เลือก...</option>
+      <option>บ้านขนาดเล็ก 8–10 ตร.ม.</option>
+      <option>บ้าน 1 ห้องนอน</option>
+      <option>บ้าน 2 ห้องนอน</option>
+      <option>บ้านรีสอร์ท / ร้านค้า / คาเฟ่</option>
+      <option>ต่อเติมบ้าน</option>
+      <option>ยังไม่แน่ใจ</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="cf-budget">งบประมาณโดยประมาณ</label>
+    <select id="cf-budget" name="budget">
+      <option value="">เลือก...</option>
+      <option>ต่ำกว่า 100,000 บาท</option>
+      <option>100,000 – 300,000 บาท</option>
+      <option>300,000 – 600,000 บาท</option>
+      <option>มากกว่า 600,000 บาท</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="cf-area">พื้นที่ติดตั้ง / จังหวัด</label>
+    <input id="cf-area" name="install_area" type="text" placeholder="เช่น อ.โกรกพระ จ.นครสวรรค์" />
+  </div>
+  <div class="field">
+    <label for="cf-msg">ข้อความเพิ่มเติม</label>
+    <textarea id="cf-msg" name="message" rows="4"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg">ส่งข้อความ</button>
+  <p class="form-note">หรือโทรเลยที่ 097-259-2502 / แอดไลน์ @baannockdown</p>
+</form>
