@@ -1,0 +1,41 @@
+---
+import { site } from '~/data/site';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  '@id': `${site.url}/#business`,
+  name: site.name,
+  alternateName: site.nameEn,
+  description: site.description,
+  url: site.url,
+  logo: `${site.url}/logo-circle.png`,
+  image: `${site.url}/og-default.jpg`,
+  telephone: site.phonesE164,
+  email: site.email,
+  priceRange: site.priceRange,
+  foundingDate: site.founded,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.streetTh,
+    addressLocality: site.address.locality,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.geo.lat,
+    longitude: site.geo.lng,
+  },
+  areaServed: site.serviceAreas.map((name) => ({ '@type': 'AdministrativeArea', name })),
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: site.openingHours.days,
+    opens: site.openingHours.opens,
+    closes: site.openingHours.closes,
+  },
+  sameAs: [site.facebookUrl, site.gbpUrl, site.lineUrl].filter(Boolean),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
