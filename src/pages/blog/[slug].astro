@@ -1,0 +1,65 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { site } from '~/data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const { Content } = await post.render();
+const url = `${site.url}/blog/${post.slug}`;
+
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'บทความ', item: site.url + '/blog' },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: url },
+  ],
+};
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  mainEntityOfPage: url,
+  headline: post.data.title,
+  description: post.data.description,
+  image: site.url + post.data.heroImage,
+  datePublished: post.data.publishDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
+  author: { '@type': 'Organization', name: site.name, url: site.url },
+  publisher: { '@id': `${site.url}/#business` },
+};
+---
+<BaseLayout
+  title={`${post.data.title} | ${site.name}`}
+  description={post.data.description}
+  image={post.data.heroImage}
+  canonicalPath={`/blog/${post.slug}`}
+  ogType="article"
+  jsonLd={[breadcrumb, article]}
+  pageId="blog-post"
+>
+  <article class="blog-post">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / <a href="/blog">บทความ</a> / {post.data.title}</nav>
+      <h1>{post.data.title}</h1>
+      <div class="post-meta">
+        <span class="blog-category">{post.data.category}</span>
+        <time datetime={post.data.publishDate.toISOString()}>
+          {post.data.publishDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </div>
+      <img src={post.data.heroImage} alt={post.data.heroImageAlt} class="post-hero" width="1200" height="600" />
+      <div class="post-body">
+        <Content />
+      </div>
+    </div>
+  </article>
+  <FinalCTA />
+</BaseLayout>
