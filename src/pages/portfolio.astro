@@ -1,0 +1,42 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import PortfolioGrid from '~/components/PortfolioGrid.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { portfolio } from '~/data/portfolio';
+import { site } from '~/data/site';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'ผลงาน', item: site.url + '/portfolio' },
+  ],
+};
+
+const galleryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'ผลงานบ้านน็อคดาวน์ นครสวรรค์',
+  image: portfolio.flatMap((p) => p.images.map((i) => ({ '@type': 'ImageObject', contentUrl: site.url + i.src, name: i.alt }))),
+};
+---
+<BaseLayout
+  title="ผลงานบ้านน็อคดาวน์ นครสวรรค์ + พื้นที่ใกล้เคียง"
+  description="รวมผลงานบ้านน็อคดาวน์จริง บ้าน 1 ห้องนอน บ้าน 2 ห้องนอน รีสอร์ท ร้านค้า คาเฟ่ จากนครสวรรค์ กำแพงเพชร ชัยนาท พิษณุโลก อุทัยธานี"
+  canonicalPath="/portfolio"
+  jsonLd={[breadcrumb, galleryJsonLd]}
+  pageId="portfolio"
+>
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / ผลงาน</nav>
+      <h1>ผลงานบ้านน็อคดาวน์ นครสวรรค์</h1>
+      <p>รวมผลงานบ้านน็อคดาวน์และงานติดตั้งจริง</p>
+    </div>
+  </section>
+  <section>
+    <div class="container"><PortfolioGrid /></div>
+  </section>
+  <FinalCTA />
+</BaseLayout>

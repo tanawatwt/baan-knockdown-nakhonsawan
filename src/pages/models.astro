@@ -1,0 +1,57 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ModelGrid from '~/components/ModelGrid.astro';
+import FinalCTA from '~/components/FinalCTA.astro';
+import { models } from '~/data/models';
+import { site } from '~/data/site';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: site.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'แบบบ้าน / ราคา', item: site.url + '/models' },
+  ],
+};
+
+const productSchemas = models.map((m) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: m.title,
+  description: `${m.title} ${m.suitableFor}`,
+  image: site.url + m.images[0],
+  brand: { '@type': 'Brand', name: site.name },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'THB',
+    price: m.startingPriceTHB,
+    priceValidUntil: '2027-12-31',
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': `${site.url}/#business` },
+  },
+}));
+---
+<BaseLayout
+  title="แบบบ้านน็อคดาวน์ + ราคา นครสวรรค์ 2026"
+  description="รวมแบบบ้านน็อคดาวน์ทุกขนาด พร้อมราคาเริ่มต้น บ้านขนาดเล็ก บ้าน 1 ห้องนอน บ้าน 2 ห้องนอน รีสอร์ท ร้านค้า คาเฟ่ ราคาเริ่มต้น 39,000 บาท"
+  canonicalPath="/models"
+  jsonLd={[breadcrumb, ...productSchemas]}
+  pageId="models"
+>
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb"><a href="/">หน้าแรก</a> / แบบบ้าน / ราคา</nav>
+      <h1>แบบบ้านน็อคดาวน์ และราคา นครสวรรค์</h1>
+      <p>เลือกแบบบ้านให้เหมาะกับงบประมาณและพื้นที่ของคุณ</p>
+    </div>
+  </section>
+  <section>
+    <div class="container"><ModelGrid /></div>
+  </section>
+  <section class="bg-tint">
+    <div class="container">
+      <p class="note">หมายเหตุ: ราคาขึ้นอยู่กับขนาด วัสดุ แบบบ้าน และพื้นที่ติดตั้ง สามารถขอใบเสนอราคาฟรีได้ตลอด</p>
+    </div>
+  </section>
+  <FinalCTA />
+</BaseLayout>
