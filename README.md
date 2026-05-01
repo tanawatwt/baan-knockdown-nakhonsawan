@@ -1,5 +1,8 @@
 # เว็บไซต์ เรื่องบ้านบ้านน็อคดาวน์ นครสวรรค์
 
+**Live URL:** TBD — deploy via [DEPLOYMENT.md](./DEPLOYMENT.md)
+**Production domain:** TBD
+
 เว็บไซต์ static แบบ lightweight สร้างด้วย Astro 5 — เน้น Local SEO สำหรับคีย์เวิร์ด **บ้านน็อคดาวน์ นครสวรรค์**
 
 ## เริ่มใช้งาน
@@ -72,3 +75,24 @@ tags: ["บ้านน็อคดาวน์", "นครสวรรค์"]
 ## โครงสร้างโปรเจกต์
 
 (ดู `docs/superpowers/specs/` สำหรับเอกสารออกแบบเต็ม)
+
+## การปรับปรุงประสิทธิภาพในอนาคต
+
+### คะแนน Lighthouse ที่คาดหวัง
+
+เมื่อรัน Lighthouse บน local preview server (`npm run preview`) คะแนน Performance จะอยู่ในช่วง **71–86** เนื่องจากเซิร์ฟเวอร์ local ไม่มี CDN, HTTP/2 หรือ Edge caching เมื่อ deploy บน **Cloudflare Pages** คะแนนจะสูงขึ้นอย่างมีนัยสำคัญ เพราะ Cloudflare CDN ส่งไฟล์จาก Edge node ที่ใกล้กับผู้ใช้ และบีบอัด assets ให้โดยอัตโนมัติ
+
+### โอกาสปรับปรุงที่แนะนำ (ทำหลัง launch)
+
+#### 1. ปรับภาพเป็น WebP/AVIF (ประหยัด ~940 KB)
+
+ปัจจุบันรูปภาพใน `public/photos/` เป็นไฟล์ JPEG ทั้งหมด การย้ายรูปมาไว้ใน `src/assets/photos/` และใช้ component `<Image>` ของ Astro จะทำให้ระบบสร้าง WebP และ AVIF ให้อัตโนมัติพร้อม lazy-loading ที่ถูกต้อง ส่งผลให้ขนาดหน้าเว็บลดลงประมาณ 940 KB และ LCP (Largest Contentful Paint) เร็วขึ้น แนะนำให้ทำหลังจาก site ขึ้น production แล้วและเนื้อหาภาพนิ่งแล้ว
+
+**วิธีคร่าวๆ:**
+1. ย้ายไฟล์รูปจาก `public/photos/` → `src/assets/photos/`
+2. แทนที่ `<img src="...">` หรือ `<img>` ด้วย `<Image src={import('...')} alt="..." />` จาก `astro:assets`
+3. รัน `npm run build` แล้วตรวจสอบขนาด `dist/`
+
+#### 2. Self-host Google Fonts (ประหยัด ~860 ms cold-start)
+
+ปัจจุบัน Google Fonts โหลดจาก `fonts.googleapis.com` ซึ่งเพิ่ม DNS lookup + TLS handshake ในการโหลดครั้งแรก การ self-host font ไว้ใน `public/fonts/` และอ้างอิงผ่าน `@font-face` ใน CSS จะลดเวลานี้ได้ประมาณ 860 ms บน connection ช้า อย่างไรก็ตาม เนื่องจากน้ำหนักหน้าเว็บโดยรวมยังเบาอยู่ การปรับข้อนี้จึงไม่ urgent — แนะนำให้ทำหลังจากทำ image optimization เสร็จแล้ว
