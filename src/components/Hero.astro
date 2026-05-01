@@ -1,0 +1,31 @@
+---
+import { site } from '~/data/site';
+---
+<section class="hero" data-screen-label="01 Hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> บ้านน็อคดาวน์ นครสวรรค์ • โกรกพระ</span>
+      <h1>รับสร้าง<span class="accent">บ้านน็อคดาวน์</span><br/>ครบวงจร ราคาคุ้มค่า สร้างไว</h1>
+      <p class="lead">ออกแบบ ผลิต และติดตั้งบ้านน็อคดาวน์ครบจบในที่เดียว โครงสร้างเหล็กกันสนิม ปรับแบบได้ตามงบและพื้นที่ของคุณ ให้บริการ{site.serviceAreas.join(' ')} และพื้นที่ใกล้เคียง</p>
+      <div class="hero-ctas">
+        <a href="/contact" class="btn btn-primary btn-lg">ขอใบเสนอราคาฟรี →</a>
+        <a href="/models" class="btn btn-ghost btn-lg">ดูแบบบ้าน</a>
+      </div>
+      <div class="hero-bullets">
+        <div class="b"><strong>{site.buildTimeDaysMin}–{site.buildTimeDaysMax} วัน</strong><span>สร้างเสร็จไว</span></div>
+        <div class="b"><strong>฿{site.startingPriceTHB.toLocaleString()}+</strong><span>ราคาเริ่มต้น</span></div>
+        <div class="b"><strong>{site.serviceAreas.length} จังหวัด</strong><span>ครอบคลุมพื้นที่</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <img src="/photos/hero-orange.jpg" alt="บ้านน็อคดาวน์ นครสวรรค์ - บ้าน 1 ห้องนอน สีส้ม" loading="eager" width="800" height="600" />
+      </div>
+      <div class="hero-card">
+        <div class="label">ราคาเริ่มต้น</div>
+        <div class="price">฿{site.startingPriceTHB.toLocaleString()}</div>
+        <div class="small">บ้าน 1 ห้องนอน • พร้อมติดตั้งหน้างาน</div>
+      </div>
+    </div>
+  </div>
+</section>
