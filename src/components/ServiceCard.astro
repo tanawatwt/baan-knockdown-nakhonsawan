@@ -1,0 +1,13 @@
+---
+import type { Service } from '~/data/services';
+interface Props { service: Service }
+const { service } = Astro.props;
+---
+<article class="service-card">
+  <h3>{service.title}</h3>
+  <p>{service.shortDescription}</p>
+  <ul>
+    {service.benefits.map((b) => <li>✓ {b}</li>)}
+  </ul>
+  <a href={`/services#${service.slug}`} class="link-arrow">ดูเพิ่มเติม →</a>
+</article>

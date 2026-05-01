@@ -1,0 +1,10 @@
+---
+import { models } from '~/data/models';
+import ModelCard from './ModelCard.astro';
+interface Props { limit?: number }
+const { limit } = Astro.props;
+const items = limit ? models.slice(0, limit) : models;
+---
+<div class="model-grid">
+  {items.map((m) => <ModelCard model={m} />)}
+</div>
