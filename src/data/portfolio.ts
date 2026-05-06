@@ -90,7 +90,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อ.โกรกพระ นครสวรรค์',
     description: 'ขั้นตอนการติดตั้งโครงพื้นเหล็กกันสนิม ก่อนวางผนัง',
     images: [
-      { src: '/photos/floor-frame.jpg', alt: 'โครงพื้นเหล็กบ้านน็อคดาวน์ ระหว่างติดตั้ง นครสวรรค์' },
+      { src: '/photos/implenting-floor.jpg', alt: 'บ้านน็อคดาวน์ระหว่างติดตั้ง นครสวรรค์' },
       { src: '/photos/floor-frame-2.jpg', alt: 'โครงพื้นบ้านน็อคดาวน์ ขั้นตอนติดตั้ง อ.โกรกพระ' },
     ],
   },
@@ -100,7 +100,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อ.พยุหะคีรี นครสวรรค์',
     description: 'ทีมงานกำลังยกโครงสร้างผนังและหลังคา',
     images: [
-      { src: '/photos/frame-1.jpg', alt: 'ทีมงานยกโครงสร้างบ้านน็อคดาวน์หน้างาน นครสวรรค์' },
+      { src: '/photos/implementing-lift-up.jpg', alt: 'ทีมงานยกบ้านน็อคดาวน์เข้าหน้างาน อ.พยุหะคีรี นครสวรรค์' },
       { src: '/photos/frame-2.jpg', alt: 'โครงสร้างบ้านน็อคดาวน์ระหว่างสร้าง อ.พยุหะคีรี' },
     ],
   },
