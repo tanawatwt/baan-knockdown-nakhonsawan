@@ -20,7 +20,7 @@ export const models: HouseModel[] = [
     startingPriceTHB: 39000,
     suitableFor: 'อยู่คนเดียว / บ้านพักชั่วคราว / ห้องเก็บของ',
     features: ['โครงสร้างเหล็กกันสนิม', 'ผนัง PU/EPS กันความร้อน', 'ติดตั้ง 7–15 วัน'],
-    images: ['/photos/grey-finished.jpg', '/photos/green-house.jpg'],
+    images: ['/photos/small-8-10-rainbow.jpg', '/photos/green-house.jpg'],
   },
   {
     slug: 'baan-1-bedroom',
