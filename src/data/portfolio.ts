@@ -15,7 +15,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อ.โกรกพระ นครสวรรค์',
     description: 'บ้านพักอาศัยขนาดเล็กสำหรับอยู่คนเดียว โครงสร้างเหล็กกันสนิม ผนัง EPS',
     images: [
-      { src: '/photos/grey-finished.jpg', alt: 'บ้านน็อคดาวน์ขนาดเล็ก สีเทา สำเร็จรูป นครสวรรค์' },
+      { src: '/photos/grey-small-house.jpg', alt: 'บ้านน็อคดาวน์ขนาดเล็ก สีเทา สำเร็จรูป นครสวรรค์' },
     ],
   },
   {
