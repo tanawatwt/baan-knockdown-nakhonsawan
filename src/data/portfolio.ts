@@ -33,7 +33,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อ.เมือง นครสวรรค์',
     description: 'บ้านน็อคดาวน์ 1 ห้องนอน 1 ห้องน้ำ พร้อมระเบียง ออกแบบสีส้มโดดเด่น',
     images: [
-      { src: '/photos/hero-orange.jpg', alt: 'บ้านน็อคดาวน์ 1 ห้องนอน สีส้ม นครสวรรค์ กลางวัน' },
+      { src: '/photos/1b-orange-day.jpg', alt: 'บ้านน็อคดาวน์ 1 ห้องนอน สีส้ม นครสวรรค์ กลางวัน' },
       { src: '/photos/orange-day.jpg', alt: 'บ้านน็อคดาวน์สีส้ม กลางวัน อ.เมือง นครสวรรค์' },
     ],
   },
