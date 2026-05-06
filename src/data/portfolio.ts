@@ -81,7 +81,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อ.เมือง นครสวรรค์',
     description: 'ร้านค้าน็อคดาวน์สีฟ้า สำหรับเปิดคาเฟ่หรือร้านอาหาร ดีไซน์ทันสมัย',
     images: [
-      { src: '/photos/blue-install.jpg', alt: 'บ้านน็อคดาวน์ร้านค้าคาเฟ่ สีฟ้า กำลังติดตั้ง นครสวรรค์' },
+      { src: '/photos/shop-cafe-blue.jpg', alt: 'บ้านน็อคดาวน์ร้านค้าคาเฟ่ สีฟ้า ระเบียงพร้อมใช้ นครสวรรค์' },
     ],
   },
   {
