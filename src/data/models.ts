@@ -30,7 +30,7 @@ export const models: HouseModel[] = [
     startingPriceTHB: 101500,
     suitableFor: 'บ้านพักอาศัยขนาดเล็ก / คู่รักเริ่มต้น',
     features: ['1 ห้องนอน 1 ห้องน้ำ', 'มีระเบียงด้านหน้า', 'พร้อมระบบไฟฟ้า'],
-    images: ['/photos/hero-orange.jpg', '/photos/orange-day.jpg'],
+    images: ['/photos/blue-house-1br.jpg', '/photos/orange-day.jpg'],
   },
   {
     slug: 'baan-2-bedroom',
