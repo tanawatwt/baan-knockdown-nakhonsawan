@@ -24,9 +24,9 @@ export const models: HouseModel[] = [
   },
   {
     slug: 'baan-1-bedroom',
-    title: 'บ้าน 1 ห้องนอน 24–36 ตร.ม.',
+    title: 'บ้าน 1 ห้องนอน 1 ห้องน้ำ 12–30 ตร.ม.',
     category: '1br',
-    sizeRange: '24–36 ตร.ม.',
+    sizeRange: '12–30 ตร.ม.',
     startingPriceTHB: 101500,
     suitableFor: 'บ้านพักอาศัยขนาดเล็ก / คู่รักเริ่มต้น',
     features: ['1 ห้องนอน 1 ห้องน้ำ', 'มีระเบียงด้านหน้า', 'พร้อมระบบไฟฟ้า'],
@@ -34,9 +34,9 @@ export const models: HouseModel[] = [
   },
   {
     slug: 'baan-2-bedroom',
-    title: 'บ้าน 2 ห้องนอน 36–60 ตร.ม.',
+    title: 'บ้าน 2 ห้องนอน 1 ห้องน้ำ 30–50 ตร.ม.',
     category: '2br',
-    sizeRange: '36–60 ตร.ม.',
+    sizeRange: '30–50 ตร.ม.',
     startingPriceTHB: 250000,
     suitableFor: 'ครอบครัว / บ้านหลังที่สอง',
     features: ['2 ห้องนอน 1 ห้องน้ำ', 'ห้องครัว + ห้องนั่งเล่น', 'ปรับแบบได้'],
