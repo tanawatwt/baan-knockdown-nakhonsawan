@@ -62,7 +62,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อุทัยธานี',
     description: 'บ้านน็อคดาวน์ 2 ห้องนอน พร้อมตกแต่งภายใน ห้องนอนกว้างขวาง',
     images: [
-      { src: '/photos/interior-1.jpg', alt: 'ภายในบ้านน็อคดาวน์ 2 ห้องนอน ห้องนอน อุทัยธานี' },
+      { src: '/photos/2b-inside.jpg', alt: 'ภายในบ้านน็อคดาวน์ 2 ห้องนอน ห้องนอน อุทัยธานี' },
       { src: '/photos/interior-2.jpg', alt: 'ภายในบ้านน็อคดาวน์ 2 ห้องนอน ห้องนั่งเล่น อุทัยธานี' },
     ],
   },
@@ -72,7 +72,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'พิษณุโลก',
     description: 'บ้านน็อคดาวน์ 2 ห้องนอน ตกแต่งครบพร้อมเฟอร์นิเจอร์',
     images: [
-      { src: '/photos/interior-3.jpg', alt: 'ภายในบ้านน็อคดาวน์ 2 ห้องนอน ตกแต่งครบครัน พิษณุโลก' },
+      { src: '/photos/2b-decorate.jpg', alt: 'ภายในบ้านน็อคดาวน์ 2 ห้องนอน ตกแต่งครบครัน พิษณุโลก' },
     ],
   },
   {
