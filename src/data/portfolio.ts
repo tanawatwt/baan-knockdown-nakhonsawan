@@ -53,7 +53,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'กำแพงเพชร',
     description: 'บ้านน็อคดาวน์สีฟ้า 1 ห้องนอน สำหรับครอบครัวขนาดเล็ก',
     images: [
-      { src: '/photos/blue-finished.jpg', alt: 'บ้านน็อคดาวน์ 1 ห้องนอน สีฟ้า พร้อมอยู่ กำแพงเพชร' },
+      { src: '/photos/1b-blue-ready.jpg', alt: 'บ้านน็อคดาวน์ 1 ห้องนอน สีฟ้า พร้อมอยู่ กำแพงเพชร' },
     ],
   },
   {
