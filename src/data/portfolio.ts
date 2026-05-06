@@ -43,7 +43,7 @@ export const portfolio: PortfolioItem[] = [
     location: 'อ.พยุหะคีรี นครสวรรค์',
     description: 'บ้านน็อคดาวน์พร้อมไฟภายนอก บรรยากาศสวยงามทั้งกลางวันและกลางคืน',
     images: [
-      { src: '/photos/orange-night.jpg', alt: 'บ้านน็อคดาวน์สีส้ม กลางคืน อ.พยุหะคีรี นครสวรรค์' },
+      { src: '/photos/1b-orange-night.jpg', alt: 'บ้านน็อคดาวน์สีส้ม กลางคืน อ.พยุหะคีรี นครสวรรค์' },
       { src: '/photos/orange-field.jpg', alt: 'บ้านน็อคดาวน์สีส้ม ในทุ่ง นครสวรรค์' },
     ],
   },
