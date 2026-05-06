@@ -50,6 +50,6 @@ export const models: HouseModel[] = [
     startingPriceTHB: 150000,
     suitableFor: 'ธุรกิจปล่อยเช่า / ร้านค้า / คาเฟ่',
     features: ['ดีไซน์ทันสมัย', 'ปรับเลย์เอาต์ได้', 'พร้อมระบบเชิงพาณิชย์'],
-    images: ['/photos/orange-field.jpg', '/photos/orange-night.jpg'],
+    images: ['/photos/orange-house-cafe.jpg', '/photos/orange-night.jpg'],
   },
 ];
