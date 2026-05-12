@@ -10,10 +10,10 @@ const { service, index = 0 } = Astro.props;
 // Map service iconKey to a photo
 const photoMap: Record<string, string> = {
   house: '/photos/blue-finished.jpg',
-  design: '/photos/grey-finished.jpg',
+  design: '/photos/blue-design.jpg',
   install: '/photos/install-frame.jpg',
   extend: '/photos/painting.jpg',
-  rental: '/photos/blue-install.jpg',
+  rental: '/photos/with-people.jpg',
   shop: '/photos/green-house.jpg',
 };
 const photo = service.image ?? photoMap[service.iconKey] ?? '/photos/blue-finished.jpg';
