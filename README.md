@@ -57,7 +57,7 @@ tags: ["บ้านน็อคดาวน์", "นครสวรรค์"]
 6. ตั้งค่า Environment Variables ใน CF dashboard:
    - `WEB3FORMS_KEY` (จาก https://web3forms.com)
    - `PUBLIC_GTM_ID` (จาก Google Tag Manager)
-   - `PUBLIC_SITE_URL` (เช่น `https://baannockdown-nakhonsawan.com`)
+   - `PUBLIC_SITE_URL` (เช่น `https://banbanknockdown.com`)
 7. เพิ่ม custom domain เมื่อพร้อม (CF จัดการ SSL ให้อัตโนมัติ)
 
 หลังจากตั้งค่าแล้ว ทุก `git push` ไปยัง branch `main` จะ rebuild + redeploy อัตโนมัติ
@@ -68,7 +68,7 @@ tags: ["บ้านน็อคดาวน์", "นครสวรรค์"]
 - [ ] เพิ่มรูป 10–15 รูปใน GBP
 - [ ] เพิ่ม URL เว็บไซต์ในช่อง "Website" ของ GBP
 - [ ] ขอ Google reviews จากลูกค้าจริง
-- [ ] Submit `https://baannockdown-nakhonsawan.com/sitemap-index.xml` ใน Google Search Console
+- [ ] Submit `https://banbanknockdown.com/sitemap-index.xml` ใน Google Search Console
 - [ ] Submit ใน Bing Webmaster Tools
 - [ ] เพิ่ม URL เว็บไซต์ในเพจ Facebook + LINE OA
 

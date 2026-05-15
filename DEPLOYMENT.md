@@ -75,7 +75,7 @@ Skip this step if you do not plan to use GTM right away.
 2. Click **Create account**
    - Account name: `Banban Knockdown NS`
    - Country: Thailand
-   - Container name: your domain (e.g. `baannockdown-nakhonsawan.com`)
+   - Container name: your domain (e.g. `banbanknockdown.com`)
    - Target platform: **Web**
 3. Click **Create** and accept the terms
 4. Copy the Container ID — it looks like `GTM-XXXXXXX`
@@ -135,7 +135,7 @@ Once the deploy status shows **Success**, open the `*.pages.dev` URL and check:
 
 ## Step 6: Add a Custom Domain (When Ready)
 
-Do this once you have purchased a domain (e.g. `baannockdown-nakhonsawan.com`).
+Do this once you have purchased a domain (e.g. `banbanknockdown.com`).
 
 1. In the Cloudflare Pages project, click **Custom domains** → **Set up a custom domain**
 2. Enter your domain and follow the DNS instructions:
@@ -144,7 +144,7 @@ Do this once you have purchased a domain (e.g. `baannockdown-nakhonsawan.com`).
 3. SSL is issued automatically — wait a few minutes for it to become active
 4. Update the environment variable `PUBLIC_SITE_URL` in Cloudflare Pages dashboard:
    - Workers & Pages → your project → Settings → Environment variables
-   - Change `PUBLIC_SITE_URL` to `https://baannockdown-nakhonsawan.com`
+   - Change `PUBLIC_SITE_URL` to `https://banbanknockdown.com`
 5. Trigger a redeploy: Workers & Pages → Deployments → **Retry deployment** on the latest build
    (Or simply push a small change to `main` and CF Pages will rebuild automatically)
 
@@ -154,7 +154,7 @@ Do this once you have purchased a domain (e.g. `baannockdown-nakhonsawan.com`).
 
 After the site is live with a stable URL, complete these off-site tasks:
 
-- [ ] **Google Search Console** — go to https://search.google.com/search-console, add the property, submit `https://baannockdown-nakhonsawan.com/sitemap-index.xml`
+- [ ] **Google Search Console** — go to https://search.google.com/search-console, add the property, submit `https://banbanknockdown.com/sitemap-index.xml`
 - [ ] **Google Business Profile** — add the site URL in the **Website** field at https://business.google.com
 - [ ] **Facebook Page** — add the site URL in the About section → Website field
 - [ ] **LINE Official Account** — add the site URL in your OA profile
